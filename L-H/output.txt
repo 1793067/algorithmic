@@ -1,0 +1,6 @@
+[32m PASS [0m: Order can be fulfilled
+[32m PASS [0m: Order cannot be fulfilled
+[32m PASS [0m: Order requires all books from one theme
+[32m PASS [0m: Order exceeds available books
+[32m PASS [0m: No books are required
+[32m PASS [0m: Order requires books from non-existent theme
