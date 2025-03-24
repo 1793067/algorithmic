@@ -1,4 +1,4 @@
-const generatePalindromicSubstrings = require("../00_tasks/task4g");
+const generatePalindromicSubstrings = require("../00_tasks/task4");
 
 describe("generatePalindromicSubstrings", () => {
   it("should return all palindromic substrings for a simple string", () => {

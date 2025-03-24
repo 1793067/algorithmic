@@ -21,25 +21,16 @@ javascript
   ["Салат", "Десерт"],  ["Суп", "Десерт"],  ["Салат", "Суп", "Десерт"]
 ] */
 
-function generateMenuCombinations(dishes) {
+function generateMenuCombinations(dishes, k) {
+  if (k === 0) return [[]];
   const result = [];
-
-  const generate = (index, currentCombination) => {
-    if (index === dishes.length) {
-      result.push([...currentCombination]);
-      return;
+  for (let i = 0; i < dishes.length; i++) {
+    const curr = dishes[i];
+    const rest = dishes.slice(i + 1);
+    for (let combinations of generateMenuCombinations(rest, k - 1)) {
+      result.push([curr, ...combinations]);
     }
-
-    // Включаем текущее блюдо в комбинацию
-    currentCombination.push(dishes[index]);
-    generate(index + 1, currentCombination);
-
-    // Исключаем текущее блюдо из комбинации
-    currentCombination.pop();
-    generate(index + 1, currentCombination);
-  };
-
-  generate(0, []);
+  }
   return result;
 }
 
