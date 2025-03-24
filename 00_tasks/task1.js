@@ -12,40 +12,40 @@
   @param chislo: number
   @return Array<Array<number>>
 */
-function sostavChisla(massivChisel, chislo) {
-  // код писать только внутри данной функции
 
-  //каскадный подход
-  function returnAllSubsets(set) {
-    return (result = set.reduce(
-      (subsets, item) => {
-        const newSubsets = subsets.map((subset) => [...subset, item]);
-        return subsets.concat(newSubsets);
-      },
-      [[]]
-    ));
-  }
-
-  //рекурсивный метод
-  function returnAllSubsetsRecursive(set) {
-    const iter = (index, subset, subsets) => {
-      for (let i = index; i < set.length; i++) {
-        subset.push(set[i]);
-        subsets.push([...subset]);
-        iter(i + 1, subset, subsets);
-        subset.pop();
-      }
-      return subsets;
-    };
-
-    return iter(0, [], [[]]);
-  }
-
-  function sumOfArrayElements(array) {
+function sumOfArrayElements(array) {
     return array.reduce((acc, cur) => acc + cur, 0);
   }
 
-  return returnAllSubsetsRecursive(massivChisel).filter((subset) => {
+  //каскадный подход
+  function returnAllSubsets(set) {
+// код писать только внутри данной функции
+    return set.reduce((subsets, item) => {
+        const newSubsets = subsets.map(subset => [item, ...subset]);
+        return subsets.concat(newSubsets);
+    }, [[]])
+}
+
+  //рекурсивный метод
+  function returnAllSubsetsRecursive(set) {
+// код писать только внутри данной функции
+    const iter = (index, subset, subsets) => {
+        for (let i = index; i < set.length; i++) {
+            subset.push(set[i]);
+            subsets.push([...subset]);
+            iter(i + 1, subset, subsets);
+            subset.pop();
+        }
+        return subsets;
+    }
+    return iter (0, [], [[]])
+}
+
+function sostavChisla(massivChisel, chislo) {
+    //const subsets = returnAllSubsets(massivChisel);
+    const subsets = returnAllSubsetsRecursive(massivChisel);
+
+  return subsets.filter((subset) => {
     return sumOfArrayElements(subset) === chislo;
   });
 }
