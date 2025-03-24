@@ -1,4 +1,4 @@
-const getAllCombinationsOfNestedListByTarget = require("../L-H/task5");
+const getAllCombinationsOfNestedListByTarget = require("../00_tasks/task5");
 
 describe("getAllCombinationsOfNestedListByTarget", () => {
   it("should return all combinations with sum equal to target and length k", () => {
